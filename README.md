@@ -1,3 +1,41 @@
+Sumario
+
+- [Instale o WSL](#instale-o-wsl)
+  - [Introdução](#introdução)
+  - [Preparação](#preparação)
+  - [Instalação](#instalação)
+  - [Defina suas credênciais](#defina-suas-credênciais)
+  - [Atualize suas dependências](#atualize-suas-dependências)
+- [Shell](#shell)
+  - [Oh My ZSH](#oh-my-zsh)
+  - [Plugins para o Oh My ZSH](#plugins-para-o-oh-my-zsh)
+- [Ferramentas](#ferramentas)
+  - [NVM](#nvm)
+    - [Instale a versão lst mais recente](#instale-a-versão-lst-mais-recente)
+  - [PNPM](#pnpm)
+    - [Alias Pn](#alias-pn)
+  - [CLI GITHUB](#cli-github)
+    - [Instalar o CLI](#instalar-o-cli)
+    - [Logar no GitHub](#logar-no-github)
+    - [Complete command](#complete-command)
+  - [Docker](#docker)
+    - [Instalação](#instalação-1)
+    - [Limpar de package](#limpar-de-package)
+    - [Definição do repo do docker](#definição-do-repo-do-docker)
+    - [Instalar ultima versão](#instalar-ultima-versão)
+    - [Instalar versão especifica](#instalar-versão-especifica)
+    - [Verificando](#verificando)
+  - [ASDF](#asdf)
+    - [Instalação](#instalação-2)
+  - [Go](#go)
+- [Parabêns](#parabêns)
+- [Dicas e Sugestões](#dicas-e-sugestões)
+  - [Comandos de Terminal](#comandos-de-terminal)
+  - [Terminal mais bonito](#terminal-mais-bonito)
+  - [Alias git](#alias-git)
+  - [Alias para stop de container](#alias-para-stop-de-container)
+  - [Transferir wsl para outro disco](#transferir-wsl-para-outro-disco)
+
 # Instale o WSL
 
 ## Introdução
@@ -17,15 +55,15 @@ Para começar vamos garantir que você está no ambiente certo para usar todo po
 
 - Pesquise por 'Ativar ou desativar recurso do windows' como mostra a imagem abaixo
 
-![alt text](image.png) ![alt text](image-1.png)
+![alt text](assets/image.png) ![alt text](assets/image-1.png)
 
 - Acesse essa opção e ative os seguintes recursos
 
-![alt text](image-2.png)
+![alt text](assets/image-2.png)
 
-![alt text](image-3.png) ![alt text](image-5.png)
+![alt text](assets/image-3.png) ![alt text](assets/image-5.png)
 
-![alt text](image-4.png) ![alt text](image-6.png)
+![alt text](assets/image-4.png) ![alt text](assets/image-6.png)
 
 ## Instalação
 
@@ -41,11 +79,11 @@ wsl --install
 
 Inicie o seu _Ubuntu_:
 
-![alt text](image-7.png)
+![alt text](assets/image-7.png)
 
 Ele vai pedir para você definir as suas credenciais:
 
-![alt text](image-8.png)
+![alt text](assets/image-8.png)
 
 Insira seu nome de usuario e uma senha simples e rápida, você vai usar ela para executar comandos recorrentes, então não pode ser muito complexa e grande
 
@@ -53,7 +91,7 @@ Insira seu nome de usuario e uma senha simples e rápida, você vai usar ela par
 
 Após definir as suas credenciais você vai estar em uma tela parecida com essa:
 
-![alt text](image-9.png)
+![alt text](assets/image-9.png)
 
 ## Atualize suas dependências
 
@@ -100,10 +138,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 
 Apos inserir o comando vai aparecer a seguinte tela para você:
-![alt text](image-10.png)
+![alt text](assets/image-10.png)
 
 É só apertar a tecla `Y` para definir o zsh como shell padrão e seu terminal deverá ficar assim:
-![alt text](image-11.png)
+![alt text](assets/image-11.png)
 
 ## Plugins para o Oh My ZSH
 
@@ -120,7 +158,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 Agora precisamos adicionar no seu .zshrc os plugins, no linux podemos abrir qualquer arquivo com editores que temos na nossa maquina, por padrão o Ubuntu vem com o `nano`, mas podemos usar o `VsCode`(Se estiver instalado).
 
 Todas as suas configuraçoes de shell vão ficar centralizadas no arquivo `.zshrc` que fica localizado na raiz do seu linux, por padrão você sempre inicia na raiz do seu linux, mas caso esteja dentro de uma pasta e queira voltar rápidamente ou só garantir que está na raiz do linux insira o comando `cd` no seu terminal e aperte a tecla `Enter`, se o seu terminal estiver como a imagem abaixo, vc está na raiz:
-![alt text](image-12.png)
+![alt text](assets/image-12.png)
 
 A partir dela vamos inserir o seguinte comando:
 
@@ -129,15 +167,15 @@ nano ~/.zshrc
 ```
 
 O seu terminal deve ficar assim agora:
-![alt text](image-13.png)
+![alt text](assets/image-13.png)
 
 Seja bem vindo ao `nano` um editor de texto padrão do linux, não é segredo como usar ele, apenas olhe para a parte inferior no terminal e verá os comando do nano:
-![alt text](image-14.png)
+![alt text](assets/image-14.png)
 
 No nano a o caractere `^` representa a tecla `Ctrl`
 
 Digite `Ctrl + W` e digite `plugin`, você deve se atentar a seguinte parte do arquivo:
-![alt text](image-15.png)
+![alt text](assets/image-15.png)
 
 Subistitua onde tem `plugins=(git)` pelo código abaixo:
 
@@ -146,7 +184,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlightin
 ```
 
 Vai ficar da seguinte maneira:
-![alt text](image-16.png)
+![alt text](assets/image-16.png)
 
 É recomendado reiniciar o terminal toda vez que você altera esse arqivo ou instala alguma coisa importante no seu linux, usando o seguinte comando:
 
@@ -231,14 +269,14 @@ Para instalar rode o seguinte comando no terminal:
 gh auth login
 ```
 
-![alt text](image-18.png)
+![alt text](assets/image-18.png)
 
 Na segunda etapa da configuração é importante que você selecione a opção `SSH`, pois ela é a responsavel por conseguimos cadastrar uma chave ssh de maneira facilitada
-![alt text](image-19.png)
+![alt text](assets/image-19.png)
 Na quarta etapa de configuração você pode escolher ter uma senha para sua chave `SSH` ou não, eu particularmente recomendo não ter, pois toda vez que voce realizar um commit ela vai pedir confirmação:
-![alt text](image-20.png)
+![alt text](assets/image-20.png)
 Por fim basta selecionar o tipo de autenticação que deseja usar para validar sua conta:
-![alt text](image-21.png)
+![alt text](assets/image-21.png)
 Finalizando essa etapa, recomendo fortemente que defina seu nome e email(de preferencia o mesmo do github) nas configuraçoes do git:
 
 ```bash
@@ -272,11 +310,11 @@ compinit -i
 
 No final ele vai ficar assim no `.zshrc`:
 
-![alt text](image-22.png)
+![alt text](assets/image-22.png)
 
 Resete o seu terminal com o comando previamente configurado ou reinicie o terminal e digite `gh`, ela vai aparecer assim:
 
-![alt text](image-23.png)
+![alt text](assets/image-23.png)
 
 ## Docker
 
@@ -342,10 +380,10 @@ sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING con
 ### Verificando
 
 Para verificar se a instalação foi um sucesso rode o comando `sudo docker run hello-world`, seu terminal vai ficar assim:
-![alt text](image-24.png)
+![alt text](assets/image-24.png)
 
 Eu recomendo fortemente que você rode o comando `docker run -it ubuntu bash`, para tentar usar o terminal dentro de uma imagem ubuntu, se surgir algum erro como esse:
-![alt text](image-25.png)
+![alt text](assets/image-25.png)
 
 Rode `sudo usermod -aG docker $USER` no terminal e reinicie o wsl pelo powershell admin com o comando `wsl --shutdown` e tente rodar novamente o comando do docker.
 
@@ -375,7 +413,7 @@ Após rodar esse comando, adicione a seguinte linha de codigo no `.zshrc`
 
 No deve ficar assim no seu `.zshrc`:
 
-![alt text](image-26.png)
+![alt text](assets/image-26.png)
 
 > Caso queira saber mais sobre o asdf [clique aqui](https://asdf-vm.com/)
 
@@ -391,7 +429,7 @@ asdf shell golang 1.21.5
 ```
 
 Pra ver se está tudo ok e rode um `go version` se o retorno for parecido com o da imagem está tudo ok
-![alt text](image-27.png)
+![alt text](assets/image-27.png)
 
 # Parabêns
 
@@ -418,7 +456,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 Subistitua o tema que está no `.zshrc` pelo `powerlevel10k/powerlevel10k` e deve ficar assim:
 
 Restarte o seu terminal e ele aparecerá assim, conclua os passos de acordo com seu gosto
-![alt text](image-28.png)
+![alt text](assets/image-28.png)
 
 > Caso queira saber mais sobre o powerlevel10k [clique aqui](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#powerlevel10k)
 
