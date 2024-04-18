@@ -1,4 +1,4 @@
-Sumario
+<h1>Sumário</h1>
 
 - [Instale o WSL](#instale-o-wsl)
   - [Introdução](#introdução)
@@ -28,6 +28,7 @@ Sumario
   - [ASDF](#asdf)
     - [Instalação](#instalação-2)
   - [Go](#go)
+    - [Instalação](#instalação-3)
 - [Parabêns](#parabêns)
 - [Dicas e Sugestões](#dicas-e-sugestões)
   - [Comandos de Terminal](#comandos-de-terminal)
@@ -35,6 +36,8 @@ Sumario
   - [Alias git](#alias-git)
   - [Alias para stop de container](#alias-para-stop-de-container)
   - [Transferir wsl para outro disco](#transferir-wsl-para-outro-disco)
+  - [Lazygit](#lazygit)
+  - [Lazydocker](#lazydocker)
 
 # Instale o WSL
 
@@ -419,7 +422,11 @@ No deve ficar assim no seu `.zshrc`:
 
 ## Go
 
-Pra instalar o GO vamos usar o asdf previamente instalado
+**Golang**, linguagem criada pelo Google em 2009, destaca-se por sua **simplicidade, velocidade, confiabilidade e suporte à concorrência**. Ideal para diversos tipos de aplicações, desde servidores web até sistemas embarcados. Curva de aprendizado e menor quantidade de bibliotecas são pontos a serem considerados. Comunidade ativa e diversos recursos facilitam o aprendizado.
+
+### Instalação
+
+Pra instalar o GO vamos usar o [asdf](#asdf) previamente instalado
 
 ```bash
 asdf plugin-add golang
@@ -485,3 +492,44 @@ alias docker-down='docker stop $(docker ps -a -q)'
 ```
 
 ## [Transferir wsl para outro disco](https://github.com/LpCodes/Moving-WSL-Distribution-to-Another-Drive)
+
+## Lazygit
+
+Uma interface gráfica para o git no terminal que pode te ajudar a identificar branchs, fazer cherrypick e até rebase
+
+> O passo a passo a seguir será para a instalação no UBUNTU, caso queria instalar de outra forma, ou em outro ambiente linux, [clique aqui](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
+
+Rode o seguuinte comando no terminal:
+
+```bash
+LAZYGIT*VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]\*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit*${LAZYGIT_VERSION}\_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+```
+
+Após a instalação resete se terminal e use o comando `lazygit` no seu terminal quando tiver dentro de um repositório q tem git e ele ficará assim:
+
+![alt text](assets/image-29.png)
+
+> Para saber mais sobre os comandos do lazygit, [clique aqui](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#features)
+
+## Lazydocker
+
+Dos mesmoas criadores de [lazygit](#lazygit) temos o lazydocker, que tem o intuito de ser uma interface gráfica para o docker no seu terminal, muito util para ver algum log ou se existe algum container que persistiu, deletar volumes facimente e outras funcionalidades
+
+Podemos instalar o programa usando o [asdf](#asdf) que deixa tudo bem mais fácil, rode os seguintes comandos no terminal caso tenha o [asdf](#asdf) instalado:
+
+```bash
+asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
+asdf list all lazydocker
+asdf install lazydocker latest
+asdf global lazydocker latest
+echo "alias lzd='lazydocker'" >> ~/.zshrc
+```
+
+Após instalar no terminal rode o comando `lazydocker` e ele ficará assim:
+
+![alt text](assets/image-30.png)
+
+> Para saber mais sobre os comandos do lazydocker, [clique aqui](https://github.com/jesseduffield/lazydocker?tab=readme-ov-file#cool-features)
