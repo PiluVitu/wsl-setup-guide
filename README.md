@@ -13,6 +13,8 @@
   - [NVM](#nvm)
     - [Instale a versão lst mais recente](#instale-a-versão-lst-mais-recente)
   - [PNPM](#pnpm)
+    - [Instalar mais recente](#instalar-mais-recente)
+    - [Instalar uma versão especifica](#instalar-uma-versão-especifica)
     - [Alias Pn](#alias-pn)
   - [CLI GITHUB](#cli-github)
     - [Instalar o CLI](#instalar-o-cli)
@@ -228,12 +230,17 @@ nvm install --lts
 
 O node por padrão vem com o `npm` como seu gerenciador de pacotesm, mas o pnpm veio para ser mais rápido e otimizado que o npm.
 
-Para instalar ele, rodamos o seguinte comando:
+### Instalar mais recente
+
+Rodamos o seguinte comando:
 
 ```bash
 npm i -g pnpm
 ```
-Para instalar uma versão especifica informe a versão base especific:
+### Instalar uma versão especifica 
+
+Informe a versão base especifica:
+
 ```bash
 npm i -g pnpm@8
 ```
