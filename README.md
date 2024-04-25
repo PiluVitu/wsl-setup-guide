@@ -38,6 +38,7 @@
   - [Transferir wsl para outro disco](#transferir-wsl-para-outro-disco)
   - [Lazygit](#lazygit)
   - [Lazydocker](#lazydocker)
+- [Melhor vilsualição do git log](#melhor-vilsualição-do-git-log)
 
 # Instale o WSL
 
@@ -230,7 +231,11 @@ O node por padrão vem com o `npm` como seu gerenciador de pacotesm, mas o pnpm 
 Para instalar ele, rodamos o seguinte comando:
 
 ```bash
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+npm i -g pnpm
+```
+Para instalar uma versão especifica informe a versão base especific:
+```bash
+npm i -g pnpm@8
 ```
 
 ### Alias Pn
@@ -533,3 +538,6 @@ Após instalar no terminal rode o comando `lazydocker` e ele ficará assim:
 ![alt text](assets/image-30.png)
 
 > Para saber mais sobre os comandos do lazydocker, [clique aqui](https://github.com/jesseduffield/lazydocker?tab=readme-ov-file#cool-features)
+
+# Melhor vilsualição do git log
+Esse é um alias de uma visualição de git log, para o git, com ela será possivel se orientar de maneira mais facil, [clique aqui](https://gist.github.com/aalmeida00/b87181f76785b2413d06e56dc6c499db), cole o comando da 1 opção no linux e quando voc 
