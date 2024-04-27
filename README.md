@@ -450,6 +450,76 @@ asdf shell golang 1.21.5
 Pra ver se está tudo ok e rode um `go version` se o retorno for parecido com o da imagem está tudo ok
 ![alt text](assets/image-27.png)
 
+## Terraform 
+### Instalação 
+- Certifique se que tenha o wget e o unzip 
+```bash
+sudo apt-get install wget unzip
+```
+- Faça o download usando o `wget` e o link do instalador do [site do terraform](https://developer.hashicorp.com/terraform/install)
+
+```bash
+wget <link do arquivo> 
+```
+- Descompacte o arquivo baixado com o `zip`
+```bash
+unzip <arquivo>
+```
+- Mova o descompactado para a pasta `/usr/bin`:
+```bash
+sudo mv terraform /usr/local/bin/
+```
+
+## Kubectl
+### Instalação
+Faça download da versão mais recente com o comando:
+```bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
+Instale o KUBECTL
+```bash
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+```
+Verifique se esta tudo certo 
+```bash
+kubectl version --client
+```
+## Lens
+### Instalação
+Obtenha a chave de segurança pública do Lens:
+```bash
+curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
+```
+Especifique o canal stable
+```bash
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
+```
+Instale o Lens Desktop:
+```bash
+sudo apt update
+sudo apt install lens
+```
+## K3D
+### Instalação
+Instale com o comando:
+```bash
+wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+```
+Teste se o K3D foi instalado corretamente:
+```bash
+k3d --version
+```
+## Helm
+### Instalação
+Instale com o comando:
+```bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+Teste se o K3D foi instalado corretamente:
+```bash
+helm version
+```
+
 # Parabêns
 
 Agora você tem um WSL, configurado e pronto para contibuir com a comunidade opensource ou fazer seus projetos pessoais, saiba que a jornada no linux é cheia de altos e baixo, qualquer duvida pergunte para alguem em um forum/comunidade que participa e com certeza alguem vai te ajudar, caso queira adaptar esse guia para seu caso especifico é só clonar ele com o comando `` e ser feliz.
@@ -514,8 +584,8 @@ Uma interface gráfica para o git no terminal que pode te ajudar a identificar b
 Rode o seguuinte comando no terminal:
 
 ```bash
-LAZYGIT*VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]\*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit*${LAZYGIT_VERSION}\_Linux_x86_64.tar.gz"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
 ```
@@ -546,5 +616,17 @@ Após instalar no terminal rode o comando `lazydocker` e ele ficará assim:
 
 > Para saber mais sobre os comandos do lazydocker, [clique aqui](https://github.com/jesseduffield/lazydocker?tab=readme-ov-file#cool-features)
 
-# Melhor vilsualição do git log
-Esse é um alias de uma visualição de git log, para o git, com ela será possivel se orientar de maneira mais facil, [clique aqui](https://gist.github.com/aalmeida00/b87181f76785b2413d06e56dc6c499db), cole o comando da 1 opção no linux e quando voc 
+## Melhor visualição do git log
+
+Esse é um alias de uma visualição de git log, para o git, com ela será possível se orientar de maneira mais fácil, [clique aqui](https://gist.github.com/aalmeida00/b87181f76785b2413d06e56dc6c499db), cole o comando da 1 opção no linux e quando você digitar `git lg` a sua visualização de commits vai ficar mais limpa e direta.
+
+
+## Definição automática de remote push git
+
+O seguinte comando faz uma magica para setar automaticamente o caminho certo do seu push no git, é uma mão na roda, um oferecimento do Andre
+```bash
+git config --global push.default current
+git config --global push.autoSetupRemote true
+```
+
+E essa foram algumas das dicas e configurações para seu sistema linux, espero que tenha sido útil, bom código e não se esqueça de seguir nossas redes sociais. 
