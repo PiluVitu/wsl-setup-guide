@@ -1,38 +1,48 @@
 <h1>Sumário</h1>
 
 - [Instale o WSL](#instale-o-wsl)
-  - [Introdução](#introdução)
-  - [Preparação](#preparação)
-  - [Instalação](#instalação)
-  - [Defina suas credênciais](#defina-suas-credênciais)
-  - [Atualize suas dependências](#atualize-suas-dependências)
+  - [Introdução](#introdu-o)
+  - [Preparação](#prepara-o)
+  - [Instalação](#instala-o)
+  - [Defina suas credênciais](#defina-suas-cred-nciais)
+  - [Atualize suas dependências](#atualize-suas-depend-ncias)
 - [Shell](#shell)
   - [Oh My ZSH](#oh-my-zsh)
   - [Plugins para o Oh My ZSH](#plugins-para-o-oh-my-zsh)
 - [Ferramentas](#ferramentas)
   - [NVM](#nvm)
-    - [Instale a versão lst mais recente](#instale-a-versão-lst-mais-recente)
+    - [Instale a versão lst mais recente](#instale-a-vers-o-lst-mais-recente)
   - [PNPM](#pnpm)
     - [Instalar mais recente](#instalar-mais-recente)
-    - [Instalar uma versão especifica](#instalar-uma-versão-especifica)
+    - [Instalar uma versão especifica](#instalar-uma-vers-o-especifica)
     - [Alias Pn](#alias-pn)
   - [CLI GITHUB](#cli-github)
     - [Instalar o CLI](#instalar-o-cli)
     - [Logar no GitHub](#logar-no-github)
     - [Complete command](#complete-command)
   - [Docker](#docker)
-    - [Instalação](#instalação-1)
+    - [Instalação](#instala-o-1)
     - [Limpar de package](#limpar-de-package)
-    - [Definição do repo do docker](#definição-do-repo-do-docker)
-    - [Instalar ultima versão](#instalar-ultima-versão)
-    - [Instalar versão especifica](#instalar-versão-especifica)
+    - [Definição do repo do docker](#defini-o-do-repo-do-docker)
+    - [Instalar ultima versão](#instalar-ultima-vers-o)
+    - [Instalar versão especifica](#instalar-vers-o-especifica)
     - [Verificando](#verificando)
   - [ASDF](#asdf)
-    - [Instalação](#instalação-2)
+    - [Instalação](#instala-o-2)
   - [Go](#go)
-    - [Instalação](#instalação-3)
-- [Parabêns](#parabêns)
-- [Dicas e Sugestões](#dicas-e-sugestões)
+    - [Instalação](#instala-o-3)
+  - [Terraform](#terraform)
+    - [Instalação](#instala-o-4)
+  - [Kubectl](#kubectl)
+    - [Instalação](#instala-o-5)
+  - [Lens](#lens)
+    - [Instalação](#instala-o-6)
+  - [K3D](#k3d)
+    - [Instalação](#instala-o-7)
+  - [Helm](#helm)
+    - [Instalação](#instala-o-8)
+- [Parabêns](#parab-ns)
+- [Dicas e Sugestões](#dicas-e-sugest-es)
   - [Comandos de Terminal](#comandos-de-terminal)
   - [Terminal mais bonito](#terminal-mais-bonito)
   - [Alias git](#alias-git)
@@ -40,7 +50,8 @@
   - [Transferir wsl para outro disco](#transferir-wsl-para-outro-disco)
   - [Lazygit](#lazygit)
   - [Lazydocker](#lazydocker)
-- [Melhor vilsualição do git log](#melhor-vilsualição-do-git-log)
+  - [Melhor visualição do git log](#melhor-visuali-o-do-git-log)
+  - [Definição automática de remote push git](#defini-o-autom-tica-de-remote-push-git)
 
 # Instale o WSL
 
@@ -237,7 +248,8 @@ Rodamos o seguinte comando:
 ```bash
 npm i -g pnpm
 ```
-### Instalar uma versão especifica 
+
+### Instalar uma versão especifica
 
 Informe a versão base especifica:
 
@@ -450,72 +462,107 @@ asdf shell golang 1.21.5
 Pra ver se está tudo ok e rode um `go version` se o retorno for parecido com o da imagem está tudo ok
 ![alt text](assets/image-27.png)
 
-## Terraform 
-### Instalação 
-- Certifique se que tenha o wget e o unzip 
+## Terraform
+
+### Instalação
+
+- Certifique se que tenha o wget e o unzip
+
 ```bash
 sudo apt-get install wget unzip
 ```
+
 - Faça o download usando o `wget` e o link do instalador do [site do terraform](https://developer.hashicorp.com/terraform/install)
 
 ```bash
-wget <link do arquivo> 
+wget <link do arquivo>
 ```
+
 - Descompacte o arquivo baixado com o `zip`
+
 ```bash
 unzip <arquivo>
 ```
+
 - Mova o descompactado para a pasta `/usr/bin`:
+
 ```bash
 sudo mv terraform /usr/local/bin/
 ```
 
 ## Kubectl
+
 ### Instalação
+
 Faça download da versão mais recente com o comando:
+
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 ```
+
 Instale o KUBECTL
+
 ```bash
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ```
-Verifique se esta tudo certo 
+
+Verifique se esta tudo certo
+
 ```bash
 kubectl version --client
 ```
+
 ## Lens
+
 ### Instalação
+
 Obtenha a chave de segurança pública do Lens:
+
 ```bash
 curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
 ```
+
 Especifique o canal stable
+
 ```bash
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
 ```
+
 Instale o Lens Desktop:
+
 ```bash
 sudo apt update
 sudo apt install lens
 ```
+
 ## K3D
+
 ### Instalação
+
 Instale com o comando:
+
 ```bash
 wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 ```
+
 Teste se o K3D foi instalado corretamente:
+
 ```bash
 k3d --version
 ```
+
 ## Helm
+
 ### Instalação
+
 Instale com o comando:
+
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
+
 Teste se o K3D foi instalado corretamente:
+
 ```bash
 helm version
 ```
@@ -620,13 +667,13 @@ Após instalar no terminal rode o comando `lazydocker` e ele ficará assim:
 
 Esse é um alias de uma visualição de git log, para o git, com ela será possível se orientar de maneira mais fácil, [clique aqui](https://gist.github.com/aalmeida00/b87181f76785b2413d06e56dc6c499db), cole o comando da 1 opção no linux e quando você digitar `git lg` a sua visualização de commits vai ficar mais limpa e direta.
 
-
 ## Definição automática de remote push git
 
 O seguinte comando faz uma magica para setar automaticamente o caminho certo do seu push no git, é uma mão na roda, um oferecimento do Andre
+
 ```bash
 git config --global push.default current
 git config --global push.autoSetupRemote true
 ```
 
-E essa foram algumas das dicas e configurações para seu sistema linux, espero que tenha sido útil, bom código e não se esqueça de seguir nossas redes sociais. 
+E essa foram algumas das dicas e configurações para seu sistema linux, espero que tenha sido útil, bom código e não se esqueça de seguir nossas redes sociais.
