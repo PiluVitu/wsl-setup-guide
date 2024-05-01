@@ -52,6 +52,7 @@
   - [Lazydocker](#lazydocker)
   - [Melhor visualição do git log](#melhor-visuali-o-do-git-log)
   - [Definição automática de remote push git](#defini-o-autom-tica-de-remote-push-git)
+  - [Definição automática da versão pelo nvm](#definição-automática-da-versão-pelo-nvm)
 
 # Instale o WSL
 
@@ -674,6 +675,33 @@ O seguinte comando faz uma magica para setar automaticamente o caminho certo do 
 ```bash
 git config --global push.default current
 git config --global push.autoSetupRemote true
+```
+## Definição automática da versão pelo nvm
+
+O @alvarofg conseguiu um script que ativa a versão automatica do node a partir de um nvm assim que se entra em um projeto 
+
+```bash
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 ```
 
 E essa foram algumas das dicas e configurações para seu sistema linux, espero que tenha sido útil, bom código e não se esqueça de seguir nossas redes sociais.
