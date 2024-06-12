@@ -1,48 +1,49 @@
 <h1>Sumário</h1>
 
 - [Instale o WSL](#instale-o-wsl)
-  - [Introdução](#introdu-o)
-  - [Preparação](#prepara-o)
-  - [Instalação](#instala-o)
-  - [Defina suas credênciais](#defina-suas-cred-nciais)
-  - [Atualize suas dependências](#atualize-suas-depend-ncias)
+  - [Introdução](#introdução)
+  - [Preparação](#preparação)
+  - [Instalação](#instalação)
+  - [Defina suas credênciais](#defina-suas-credênciais)
+  - [Atualize suas dependências](#atualize-suas-dependências)
 - [Shell](#shell)
   - [Oh My ZSH](#oh-my-zsh)
   - [Plugins para o Oh My ZSH](#plugins-para-o-oh-my-zsh)
 - [Ferramentas](#ferramentas)
   - [NVM](#nvm)
-    - [Instale a versão lst mais recente](#instale-a-vers-o-lst-mais-recente)
+    - [Instale a versão lst mais recente](#instale-a-versão-lst-mais-recente)
   - [PNPM](#pnpm)
     - [Instalar mais recente](#instalar-mais-recente)
-    - [Instalar uma versão especifica](#instalar-uma-vers-o-especifica)
+    - [Instalar uma versão especifica](#instalar-uma-versão-especifica)
     - [Alias Pn](#alias-pn)
   - [CLI GITHUB](#cli-github)
     - [Instalar o CLI](#instalar-o-cli)
     - [Logar no GitHub](#logar-no-github)
     - [Complete command](#complete-command)
   - [Docker](#docker)
-    - [Instalação](#instala-o-1)
+    - [Instalação](#instalação-1)
     - [Limpar de package](#limpar-de-package)
-    - [Definição do repo do docker](#defini-o-do-repo-do-docker)
-    - [Instalar ultima versão](#instalar-ultima-vers-o)
-    - [Instalar versão especifica](#instalar-vers-o-especifica)
+    - [Definição do repo do docker](#definição-do-repo-do-docker)
+    - [Instalar ultima versão](#instalar-ultima-versão)
+    - [Instalar versão especifica](#instalar-versão-especifica)
     - [Verificando](#verificando)
+    - [Pós-instalação(rodando docker sem sudo)](#pós-instalaçãorodando-docker-sem-sudo)
   - [ASDF](#asdf)
-    - [Instalação](#instala-o-2)
+    - [Instalação](#instalação-2)
   - [Go](#go)
-    - [Instalação](#instala-o-3)
+    - [Instalação](#instalação-3)
   - [Terraform](#terraform)
-    - [Instalação](#instala-o-4)
+    - [Instalação](#instalação-4)
   - [Kubectl](#kubectl)
-    - [Instalação](#instala-o-5)
+    - [Instalação](#instalação-5)
   - [Lens](#lens)
-    - [Instalação](#instala-o-6)
+    - [Instalação](#instalação-6)
   - [K3D](#k3d)
-    - [Instalação](#instala-o-7)
+    - [Instalação](#instalação-7)
   - [Helm](#helm)
-    - [Instalação](#instala-o-8)
-- [Parabêns](#parab-ns)
-- [Dicas e Sugestões](#dicas-e-sugest-es)
+    - [Instalação](#instalação-8)
+- [Parabêns](#parabêns)
+- [Dicas e Sugestões](#dicas-e-sugestões)
   - [Comandos de Terminal](#comandos-de-terminal)
   - [Terminal mais bonito](#terminal-mais-bonito)
   - [Alias git](#alias-git)
@@ -50,8 +51,8 @@
   - [Transferir wsl para outro disco](#transferir-wsl-para-outro-disco)
   - [Lazygit](#lazygit)
   - [Lazydocker](#lazydocker)
-  - [Melhor visualição do git log](#melhor-visuali-o-do-git-log)
-  - [Definição automática de remote push git](#defini-o-autom-tica-de-remote-push-git)
+  - [Melhor visualição do git log](#melhor-visualição-do-git-log)
+  - [Definição automática de remote push git](#definição-automática-de-remote-push-git)
   - [Definição automática da versão pelo nvm](#definição-automática-da-versão-pelo-nvm)
 
 # Instale o WSL
@@ -422,6 +423,25 @@ Rode `sudo usermod -aG docker $USER` no terminal e reinicie o wsl pelo powershel
 > Você precisará rodar `sudo service docker start` toda vez que for usar o mesmo
 >
 > **É MUITO IMPORTANTE TOMAR CUIDADO PARA NÃO DEIXAR MUITOS CONTAINERS ATIVOS NO SEU PC**
+
+### Pós-instalação(rodando docker sem sudo)
+
+Isso é um passo opcional mas adiciona qualidade de vida. Segundo a documentação do Docker, o daemon se conecta a um socket Unix, e não a uma porta TCP. Por padrão o usuário `root` é o dono do socket Unix e outros usuário podem acessá-lo usando `sudo`, por isso o daemon do Docker sempre roda como o `root`.
+
+Caso você não deseje usar `sudo` sempre que for usar o Docker, é necessário criar um grupo Unix e adicionar os usuários a ele.
+
+Em resumo você faria o seguinte:
+
+1. Crie um grupo `docker`: `sudo groupadd docker`
+2. Adicione seu usuário ao grupo `docker`: `sudo usermod -aG docker $USER`
+3. Relogue no seu usuário para que as mudanças surtam efeito, ou digite no terminal: `newgrp docker`
+4. Verifique se funcionou rodando sem `sudo`: `docker run hello-world` 
+
+> Mais detalhes da documentação: https://docs.docker.com/engine/install/linux-postinstall/
+
+**Segui todos os passos mas ainda preciso usar `sudo`, como resolver?**
+
+Talvez você tenha removido todos os pacotes docker que aparecem no `sudo apt list --installed`, mas o docker desktop deixou uma pasta no sistema. Geralmente ela está na raiz, portanto a removendo com o comando `sudo rm -r ~/.docker` deve resolver. Após apagar a pasta teste novamente.
 
 ## ASDF
 
