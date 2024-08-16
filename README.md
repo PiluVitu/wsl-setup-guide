@@ -21,34 +21,39 @@
     - [Logar no GitHub](#logar-no-github)
     - [Complete command](#complete-command)
   - [Docker](#docker)
-    - [Instalação](#instalação-1)
+    - [Instalação](#instalação)
     - [Limpar de package](#limpar-de-package)
     - [Definição do repo do docker](#definição-do-repo-do-docker)
     - [Instalar ultima versão](#instalar-ultima-versão)
     - [Instalar versão especifica](#instalar-versão-especifica)
     - [Verificando](#verificando)
-    - [Pós-instalação(rodando docker sem sudo)](#pós-instalaçãorodando-docker-sem-sudo)
+    - [Pós-instalação(rodando docker sem sudo)](<#pós-instalação(rodando-docker-sem-sudo)>)
   - [ASDF](#asdf)
-    - [Instalação](#instalação-2)
+    - [Instalação](#instalação)
   - [Go](#go)
-    - [Instalação](#instalação-3)
+    - [Instalação](#instalação)
   - [Terraform](#terraform)
-    - [Instalação](#instalação-4)
+    - [Instalação](#instalação)
   - [Kubectl](#kubectl)
-    - [Instalação](#instalação-5)
+    - [Instalação](#instalação)
   - [Lens](#lens)
-    - [Instalação](#instalação-6)
+    - [Instalação](#instalação)
   - [K3D](#k3d)
-    - [Instalação](#instalação-7)
+    - [Instalação](#instalação)
   - [Helm](#helm)
-    - [Instalação](#instalação-8)
+    - [Instalação](#instalação)
+  - [AWS-CLI](#aws-cli)
+    - [Instalação](#instalação)
+    - [Atualização](#atualização)
+  - [Localstack](#localstack)
+    - [Instalação](#instalação)
 - [Parabêns](#parabêns)
 - [Dicas e Sugestões](#dicas-e-sugestões)
   - [Comandos de Terminal](#comandos-de-terminal)
   - [Terminal mais bonito](#terminal-mais-bonito)
   - [Alias git](#alias-git)
   - [Alias para stop de container](#alias-para-stop-de-container)
-  - [Transferir wsl para outro disco](#transferir-wsl-para-outro-disco)
+  - [[Transferir wsl para outro disco](https://github.com/LpCodes/Moving-WSL-Distribution-to-Another-Drive)](<#[transferir-wsl-para-outro-disco](https://github.com/lpcodes/moving-wsl-distribution-to-another-drive)>)
   - [Lazygit](#lazygit)
   - [Lazydocker](#lazydocker)
   - [Melhor visualição do git log](#melhor-visualição-do-git-log)
@@ -435,9 +440,9 @@ Em resumo você faria o seguinte:
 1. Crie um grupo `docker`: `sudo groupadd docker`
 2. Adicione seu usuário ao grupo `docker`: `sudo usermod -aG docker $USER`
 3. Relogue no seu usuário para que as mudanças surtam efeito, ou digite no terminal: `newgrp docker`
-4. Verifique se funcionou rodando sem `sudo`: `docker run hello-world` 
+4. Verifique se funcionou rodando sem `sudo`: `docker run hello-world`
 
-> Mais detalhes da documentação: https://docs.docker.com/engine/install/linux-postinstall/
+> Mais detalhes da documentação: <https://docs.docker.com/engine/install/linux-postinstall/>
 
 **Segui todos os passos mas ainda preciso usar `sudo`, como resolver?**
 
@@ -588,6 +593,51 @@ Teste se o K3D foi instalado corretamente:
 helm version
 ```
 
+## AWS-CLI
+
+### Instalação
+
+- Baixe o instalador e descompacte o aws cli e instale o mesmo
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+### Atualização
+
+- Para instalar a atualização você pode rodar o seguinte comando e aceitar que ele sobrescreva todos com 'a'
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+```
+
+## Localstack
+
+### Instalação
+
+- Baixe o instalador
+
+```bash
+curl --output localstack-cli-3.6.0-linux-amd64-onefile.tar.gz \
+    --location https://github.com/localstack/localstack-cli/releases/download/v3.6.0/localstack-cli-3.6.0-linux-amd64-onefile.tar.gz
+```
+
+- Descompacte o mesmo
+
+```bash
+sudo tar xvzf localstack-cli-3.6.0-linux-*-onefile.tar.gz -C /usr/local/bin
+```
+
+- Para verificar a instalação rode o seguinte comando:
+
+```bash
+localstack --version
+```
+
 # Parabêns
 
 Agora você tem um WSL, configurado e pronto para contibuir com a comunidade opensource ou fazer seus projetos pessoais, saiba que a jornada no linux é cheia de altos e baixo, qualquer duvida pergunte para alguem em um forum/comunidade que participa e com certeza alguem vai te ajudar, caso queira adaptar esse guia para seu caso especifico é só clonar ele com o comando `` e ser feliz.
@@ -696,9 +746,10 @@ O seguinte comando faz uma magica para setar automaticamente o caminho certo do 
 git config --global push.default current
 git config --global push.autoSetupRemote true
 ```
+
 ## Definição automática da versão pelo nvm
 
-O @alvarofg conseguiu um script que ativa a versão automatica do node a partir de um nvm assim que se entra em um projeto 
+O @alvarofg conseguiu um script que ativa a versão automatica do node a partir de um nvm assim que se entra em um projeto
 
 ```bash
 # place this after nvm initialization!
